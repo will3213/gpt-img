@@ -3,11 +3,8 @@
 import { useState, useEffect } from 'react';
 import { X, Cookie } from 'lucide-react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
 export default function CookieConsent() {
-  const pathname = usePathname();
-  const locale = pathname.split('/')[1] || 'en';
   const [showBanner, setShowBanner] = useState(false);
   const [mounted, setMounted] = useState(false);
 

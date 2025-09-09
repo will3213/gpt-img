@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Download, Loader } from 'lucide-react';
 import Image from 'next/image';
 import { getTranslation } from '@/lib/translations';
@@ -11,14 +11,9 @@ export default function ImageGenerator({ locale }: { locale: string }) {
   const [imageUrl, setImageUrl] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [error, setError] = useState('');
-  const [mounted, setMounted] = useState(false);
   const [lastRequestTime, setLastRequestTime] = useState(0);
-  const [requestCount, setRequestCount] = useState(0);
   const [isCaptchaValid, setIsCaptchaValid] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const generateImage = async () => {
     if (!prompt.trim()) return;
@@ -77,7 +72,7 @@ export default function ImageGenerator({ locale }: { locale: string }) {
       } else {
         setError(data.error || getTranslation(locale, 'error'));
       }
-    } catch (err) {
+    } catch {
       setError(getTranslation(locale, 'error'));
     } finally {
       setIsGenerating(false);

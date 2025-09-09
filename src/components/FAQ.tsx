@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { ChevronDown, ChevronUp, HelpCircle } from 'lucide-react';
 import { getTranslation } from '@/lib/translations';
 
@@ -111,18 +112,18 @@ export default function FAQ({ locale }: { locale: string }) {
               {getTranslation(locale, 'faq_contact_text') || 'We\'re here to help! Check our terms and privacy policy for more information.'}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <a 
+              <Link 
                 href="/terms"
                 className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
               >
                 {getTranslation(locale, 'faq_view_terms') || 'View Terms of Service'}
-              </a>
-              <a 
+              </Link>
+              <Link 
                 href="/privacy"
                 className="inline-flex items-center px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-colors"
               >
                 {getTranslation(locale, 'faq_view_privacy') || 'View Privacy Policy'}
-              </a>
+              </Link>
             </div>
           </div>
         </div>

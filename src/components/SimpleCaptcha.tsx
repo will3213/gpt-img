@@ -26,6 +26,7 @@ export default function SimpleCaptcha({ onVerify, disabled = false }: SimpleCapt
 
   useEffect(() => {
     generateNumbers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleAnswerChange = (e: React.ChangeEvent<HTMLInputElement>) => {

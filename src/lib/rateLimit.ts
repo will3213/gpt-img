@@ -76,7 +76,7 @@ export function getClientIP(req: Request): string {
 }
 
 // IP黑名单（可以从环境变量或数据库加载）
-const BLACKLISTED_IPS = new Set([
+const BLACKLISTED_IPS = new Set<string>([
   // 添加需要封禁的IP地址
   // '192.168.1.100',
   // '10.0.0.50'

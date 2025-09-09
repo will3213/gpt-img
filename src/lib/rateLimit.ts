@@ -46,11 +46,11 @@ class RateLimiter {
 }
 
 // 全局限流器实例
-// IP级别：每小时最多3次请求  
-export const ipRateLimiter = new RateLimiter(3, 60 * 60 * 1000);
+// IP级别：每小时最多10次请求  
+export const ipRateLimiter = new RateLimiter(10, 60 * 60 * 1000);
 
 // 每分钟限流：防止快速请求
-export const minuteRateLimiter = new RateLimiter(1, 60 * 1000);
+export const minuteRateLimiter = new RateLimiter(2, 60 * 1000);
 
 // 获取客户端IP
 export function getClientIP(req: Request): string {

@@ -24,9 +24,9 @@ export default function ImageGenerator({ locale }: { locale: string }) {
       return;
     }
 
-    // 客户端频率限制：每10秒最多1次请求
+    // 客户端频率限制：每5秒最多1次请求
     const now = Date.now();
-    const minInterval = 10000; // 10秒
+    const minInterval = 5000; // 5秒
     
     if (now - lastRequestTime < minInterval) {
       const remainingTime = Math.ceil((minInterval - (now - lastRequestTime)) / 1000);
@@ -34,8 +34,8 @@ export default function ImageGenerator({ locale }: { locale: string }) {
       return;
     }
     
-    // 每小时最多5次请求
-    const hourlyLimit = 5;
+    // 每小时最多8次请求
+    const hourlyLimit = 8;
     const storedRequests = localStorage.getItem('image_requests');
     const requests = storedRequests ? JSON.parse(storedRequests) : [];
     const oneHourAgo = now - 60 * 60 * 1000;
@@ -44,7 +44,7 @@ export default function ImageGenerator({ locale }: { locale: string }) {
     const recentRequests = requests.filter((time: number) => time > oneHourAgo);
     
     if (recentRequests.length >= hourlyLimit) {
-      setError('每小时最多生成5张图片，请稍后再试');
+      setError('每小时最多生成8张图片，请稍后再试');
       return;
     }
 

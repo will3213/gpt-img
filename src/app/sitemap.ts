@@ -12,21 +12,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 1.0,
   }))
 
-  // Legal pages for each language
-  const legalRoutes = locales.flatMap((locale) => [
+  // Global legal pages (no language prefix)
+  const legalRoutes = [
     {
-      url: `${baseUrl}/${locale}/terms`,
+      url: `${baseUrl}/terms`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.3,
     },
     {
-      url: `${baseUrl}/${locale}/privacy`,
+      url: `${baseUrl}/privacy`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.3,
     },
-  ])
+  ]
 
   return [
     {
